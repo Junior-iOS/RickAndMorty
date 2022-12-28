@@ -20,6 +20,9 @@
 		147A78FD295CB76800882623 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A78FC295CB76800882623 /* CharacterViewController.swift */; };
 		147A78FF295CB77E00882623 /* EpisodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A78FE295CB77E00882623 /* EpisodeViewController.swift */; };
 		147A7901295CB78700882623 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7900295CB78700882623 /* SettingsViewController.swift */; };
+		147A7903295CE1A000882623 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7902295CE1A000882623 /* Service.swift */; };
+		147A7905295CE1B500882623 /* RMRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7904295CE1B500882623 /* RMRequest.swift */; };
+		147A7907295CE22900882623 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7906295CE22900882623 /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		147A78FC295CB76800882623 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		147A78FE295CB77E00882623 /* EpisodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewController.swift; sourceTree = "<group>"; };
 		147A7900295CB78700882623 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		147A7902295CE1A000882623 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		147A7904295CE1B500882623 /* RMRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMRequest.swift; sourceTree = "<group>"; };
+		147A7906295CE22900882623 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,9 @@
 		147A78F0295CA4ED00882623 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				147A7902295CE1A000882623 /* Service.swift */,
+				147A7904295CE1B500882623 /* RMRequest.swift */,
+				147A7906295CE22900882623 /* Endpoint.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -226,12 +235,15 @@
 				147A78FB295CB76000882623 /* LocationViewController.swift in Sources */,
 				147A78FF295CB77E00882623 /* EpisodeViewController.swift in Sources */,
 				147A78DD295C9D1D00882623 /* RMTabBarController.swift in Sources */,
+				147A7907295CE22900882623 /* Endpoint.swift in Sources */,
 				147A7901295CB78700882623 /* SettingsViewController.swift in Sources */,
 				147A78F8295CA5D600882623 /* Episode.swift in Sources */,
 				147A78D9295C9D1D00882623 /* AppDelegate.swift in Sources */,
 				147A78FD295CB76800882623 /* CharacterViewController.swift in Sources */,
 				147A78F6295CA5CF00882623 /* Character.swift in Sources */,
+				147A7903295CE1A000882623 /* Service.swift in Sources */,
 				147A78F4295CA5BE00882623 /* Location.swift in Sources */,
+				147A7905295CE1B500882623 /* RMRequest.swift in Sources */,
 				147A78DB295C9D1D00882623 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
