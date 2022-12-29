@@ -9,7 +9,7 @@ import Foundation
 
 final class RMRequest {
     private let endpoint: Endpoint
-    private let pathComponents: Set<String>
+    private let pathComponents: [String]
     private let queryParameters: [URLQueryItem]
     
     private var urlString: String {
@@ -46,10 +46,14 @@ final class RMRequest {
     
     public let httpMethod = "GET"
     
-    init(endpoint: Endpoint, pathComponents: Set<String> = [], queryParameters: [URLQueryItem] = []) {
+    init(endpoint: Endpoint, pathComponents: [String] = [], queryParameters: [URLQueryItem] = []) {
         self.endpoint = endpoint
         self.pathComponents = pathComponents
         self.queryParameters = queryParameters
     }
     
+}
+
+extension RMRequest {
+    static let listCharactersRequests = RMRequest(endpoint: .character)
 }

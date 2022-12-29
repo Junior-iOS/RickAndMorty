@@ -14,8 +14,8 @@ struct Character: Codable {
     let species: String
     let type: String
     let gender: CharacterGender
-    let origin: CharacterOrigin
-    let location: CharacterLocation
+    let origin: CharacterGenerics
+    let location: CharacterGenerics
     let image: String
     let episode: [String]
     let url: String
@@ -30,17 +30,12 @@ enum CharacterStatus: String, Codable {
 
 enum CharacterGender: String, Codable {
     case male = "Male"
-    case female = "Femae"
+    case female = "Female"
     case genderless = "Genderless"
     case `unknown` = "unknown"
 }
 
-struct CharacterOrigin: Codable {
-    let name: String
-    let url: String
-}
-
-struct CharacterLocation: Codable {
+struct CharacterGenerics: Codable {
     let name: String
     let url: String
 }
