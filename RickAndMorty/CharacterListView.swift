@@ -25,7 +25,7 @@ class CharacterListView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: CharactersCollectionViewCell.identifier)
         collectionView.isHidden = true
         collectionView.alpha = 0
         
@@ -68,17 +68,22 @@ extension CharacterListView: CodeView {
         translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         
+        viewModel.delegate = self
         viewModel.fetchCharacters()
         setupCollectionView()
+    }
+}
+
+extension CharacterListView: CharacterListViewViewModelDelegate {
+    func didLoadInitialCharacters() {
+        spinner.stopAnimating()
+        collectionView.isHidden = false
+        collectionView.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
-            self.spinner.stopAnimating()
-            self.collectionView.isHidden = false
-            
             UIView.animate(withDuration: 0.4) {
                 self.collectionView.alpha = 1
             }
-            
         })
     }
 }

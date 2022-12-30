@@ -28,6 +28,8 @@
 		147A790F295D480000882623 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A790E295D480000882623 /* CharacterListView.swift */; };
 		147A7911295D490700882623 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7910295D490700882623 /* UIView+Extensions.swift */; };
 		147A7913295D495400882623 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7912295D495400882623 /* CodeView.swift */; };
+		147A7915295DFD2D00882623 /* CharactersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7914295DFD2D00882623 /* CharactersCollectionViewCell.swift */; };
+		147A7917295DFDDA00882623 /* CharacterCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A7916295DFDDA00882623 /* CharacterCollectionViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		147A790E295D480000882623 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		147A7910295D490700882623 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		147A7912295D495400882623 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		147A7914295DFD2D00882623 /* CharactersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersCollectionViewCell.swift; sourceTree = "<group>"; };
+		147A7916295DFDDA00882623 /* CharacterCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				147A790C295D47A500882623 /* CharacterListViewViewModel.swift */,
+				147A7916295DFDDA00882623 /* CharacterCollectionViewCellViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				147A790E295D480000882623 /* CharacterListView.swift */,
+				147A7914295DFD2D00882623 /* CharactersCollectionViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -264,11 +270,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				147A78FB295CB76000882623 /* LocationViewController.swift in Sources */,
+				147A7917295DFDDA00882623 /* CharacterCollectionViewCellViewModel.swift in Sources */,
 				147A78FF295CB77E00882623 /* EpisodeViewController.swift in Sources */,
 				147A78DD295C9D1D00882623 /* RMTabBarController.swift in Sources */,
 				147A7907295CE22900882623 /* Endpoint.swift in Sources */,
 				147A7901295CB78700882623 /* SettingsViewController.swift in Sources */,
 				147A78F8295CA5D600882623 /* Episode.swift in Sources */,
+				147A7915295DFD2D00882623 /* CharactersCollectionViewCell.swift in Sources */,
 				147A790F295D480000882623 /* CharacterListView.swift in Sources */,
 				147A78D9295C9D1D00882623 /* AppDelegate.swift in Sources */,
 				147A78FD295CB76800882623 /* CharacterViewController.swift in Sources */,

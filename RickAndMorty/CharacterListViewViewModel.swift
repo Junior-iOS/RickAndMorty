@@ -8,12 +8,35 @@
 import Foundation
 import UIKit
 
+protocol CharacterListViewViewModelDelegate: AnyObject {
+    func didLoadInitialCharacters()
+}
+
 final class CharacterListViewViewModel: NSObject {
-    func fetchCharacters() {
-        Service.shared.execute(.listCharactersRequests, expecting: GetAllCharactersResponse.self) { result in
+    public weak var delegate: CharacterListViewViewModelDelegate?
+    
+    public var characters: [Character] = [] {
+        didSet {
+            for character in characters {
+                let viewModel = CharacterCollectionViewCellViewModel(characterName: character.name,
+                                                                     characterStatus: character.status,
+                                                                     characterImageUrl: URL(string: character.image)
+                )
+                cellViewModels.append(viewModel)
+            }
+        }
+    }
+    private var cellViewModels: [CharacterCollectionViewCellViewModel] = []
+    
+    public  func fetchCharacters() {
+        Service.shared.execute(.listCharactersRequests, expecting: GetAllCharactersResponse.self) { [weak self] result in
             switch result {
             case .success(let model):
-                print(model)
+                let results = model.results
+                self?.characters = results
+                DispatchQueue.main.async {
+                    self?.delegate?.didLoadInitialCharacters()
+                }
             case .failure(let error):
                 print(error)
             }
@@ -23,13 +46,16 @@ final class CharacterListViewViewModel: NSObject {
 
 extension CharacterListViewViewModel: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return cellViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .systemGreen
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharactersCollectionViewCell.identifier,
+                                                            for: indexPath) as? CharactersCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         
+        cell.configure(with: cellViewModels[indexPath.row])
         return cell
     }
     
