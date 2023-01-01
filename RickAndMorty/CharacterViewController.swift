@@ -13,7 +13,6 @@ final class CharacterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setup()
     }
 
@@ -34,5 +33,15 @@ extension CharacterViewController: CodeView {
     func setupAdditionalConfiguration() {
         view.backgroundColor = .systemBackground
         title = "Characters"
+        characterListView.delegate = self
+    }
+}
+
+extension CharacterViewController: CharacterListViewDelegate {
+    func setCharacterListView(with characterListView: CharacterListView, _ didSelectCharacter: Character) {
+        let viewModel = CharacterDetailViewViewModel(character: didSelectCharacter)
+        let vc = CharacterDetailViewController(viewModel: viewModel)
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

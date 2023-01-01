@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol CharacterListViewDelegate: AnyObject {
+    func setCharacterListView(with characterListView: CharacterListView, _ didSelectCharacter: Character)
+}
+
 class CharacterListView: UIView {
     
     private let viewModel = CharacterListViewViewModel()
+    public weak var delegate: CharacterListViewDelegate?
     
     private let spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(style: .large)
@@ -26,6 +31,9 @@ class CharacterListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CharactersCollectionViewCell.self, forCellWithReuseIdentifier: CharactersCollectionViewCell.identifier)
+        collectionView.register(FooterLoadingCollectionReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                                withReuseIdentifier: FooterLoadingCollectionReusableView.identifier)
         collectionView.isHidden = true
         collectionView.alpha = 0
         
@@ -85,5 +93,9 @@ extension CharacterListView: CharacterListViewViewModelDelegate {
                 self.collectionView.alpha = 1
             }
         })
+    }
+    
+    func didSelectCharacter(_ character: Character) {
+        delegate?.setCharacterListView(with: self, character)
     }
 }
