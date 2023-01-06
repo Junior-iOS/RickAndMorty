@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1429BCB0296522EA00B3AA30 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1429BCAF296522EA00B3AA30 /* ImageLoader.swift */; };
 		147A78D9295C9D1D00882623 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A78D8295C9D1D00882623 /* AppDelegate.swift */; };
 		147A78DB295C9D1D00882623 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A78DA295C9D1D00882623 /* SceneDelegate.swift */; };
 		147A78DD295C9D1D00882623 /* RMTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147A78DC295C9D1D00882623 /* RMTabBarController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1429BCAF296522EA00B3AA30 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		147A78D5295C9D1D00882623 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		147A78D8295C9D1D00882623 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		147A78DA295C9D1D00882623 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				147A7910295D490700882623 /* UIView+Extensions.swift */,
 				147A7912295D495400882623 /* CodeView.swift */,
+				1429BCAF296522EA00B3AA30 /* ImageLoader.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				147A7913295D495400882623 /* CodeView.swift in Sources */,
 				147A78F6295CA5CF00882623 /* Character.swift in Sources */,
 				147A790B295D411C00882623 /* GetAllCharactersResponse.swift in Sources */,
+				1429BCB0296522EA00B3AA30 /* ImageLoader.swift in Sources */,
 				147A7903295CE1A000882623 /* Service.swift in Sources */,
 				147A7911295D490700882623 /* UIView+Extensions.swift in Sources */,
 				14D971192962107900CB9198 /* FooterLoadingCollectionReusableView.swift in Sources */,

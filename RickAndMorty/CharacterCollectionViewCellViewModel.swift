@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CharacterCollectionViewCellViewModel {
+final class CharacterCollectionViewCellViewModel: Hashable {
     public let characterName: String
     private let characterStatus: CharacterStatus
     private let characterImageUrl: URL?
@@ -28,12 +28,19 @@ final class CharacterCollectionViewCellViewModel {
             return
         }
         
-        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
-            guard let data = data, error == nil else {
-                completion(.failure(error ?? URLError(.badServerResponse)))
-                return
-            }
-            completion(.success(data))
-        }.resume()
+        ImageLoader.shared.downloadImage(url, completion: completion)
+    }
+}
+
+// MARK: - HASHABLE
+extension CharacterCollectionViewCellViewModel: Equatable {
+    static func == (lhs: CharacterCollectionViewCellViewModel, rhs: CharacterCollectionViewCellViewModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(characterName)
+        hasher.combine(characterStatus)
+        hasher.combine(characterImageUrl)
     }
 }
