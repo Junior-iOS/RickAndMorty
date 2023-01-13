@@ -9,14 +9,17 @@ import Foundation
 import UIKit
 
 class CharacterDetailViewViewModel {
-    enum SectionType: CaseIterable {
-        case photo
-        case information
-        case episodes
+    enum SectionType {
+        case photo(viewModel: CharacterPhotoCollectionViewCellViewModel)
+        
+        case information(viewModels: [CharacterInfoCollectionViewCellViewModel])
+        
+        case episodes(viewModels: [CharacterEpisodeCollectionViewCellViewModel])
     }
     
     private let character: Character
-    let sections = SectionType.allCases
+    
+    public var sections: [SectionType] = []
     
     public var title: String {
         character.name.uppercased()
@@ -28,6 +31,15 @@ class CharacterDetailViewViewModel {
     
     init(character: Character) {
         self.character = character
+        setupSections()
+    }
+    
+    private func setupSections() {
+        sections = [
+            .photo(viewModel: .init()),
+            .information(viewModels: [.init(), .init(), .init(), .init()]),
+            .episodes(viewModels: [.init(), .init(), .init(), .init()])
+        ]
     }
     
     public func createPhotoSectionLayout() -> NSCollectionLayoutSection {
