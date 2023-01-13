@@ -27,6 +27,8 @@ final class CharacterDetailView: UIView {
         collectionView.register(CharacterPhotoCollectionViewCell.self, forCellWithReuseIdentifier: CharacterPhotoCollectionViewCell.identifier)
         collectionView.register(CharacterInfoCollectionViewCell.self, forCellWithReuseIdentifier: CharacterInfoCollectionViewCell.identifier)
         collectionView.register(CharacterEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: CharacterEpisodeCollectionViewCell.identifier)
+        
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
@@ -83,25 +85,24 @@ extension CharacterDetailView: UICollectionViewDelegate, UICollectionViewDataSou
                 for: indexPath) as? CharacterPhotoCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.backgroundColor = .yellow
             cell.configure(with: viewModel)
             return cell
+            
         case .information(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: CharacterInfoCollectionViewCell.identifier,
                 for: indexPath) as? CharacterInfoCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.backgroundColor = .green
             cell.configure(with: viewModels[indexPath.row])
             return cell
+            
         case .episodes(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: CharacterEpisodeCollectionViewCell.identifier,
                 for: indexPath) as? CharacterEpisodeCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            cell.backgroundColor = .brown
             cell.configure(with: viewModels[indexPath.row])
             return cell
         }
