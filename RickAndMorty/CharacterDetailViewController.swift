@@ -22,6 +22,7 @@ final class CharacterDetailViewController: UIViewController {
         self.viewModel = viewModel
         self.characaterDetailView = CharacterDetailView(frame: .zero, viewModel: viewModel)
         super.init(nibName: nil, bundle: nil)
+        self.characaterDetailView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -53,5 +54,12 @@ extension CharacterDetailViewController: CodeView {
         
         characaterDetailView.translatesAutoresizingMaskIntoConstraints = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapShare))
+    }
+}
+
+extension CharacterDetailViewController: CharacterDetailViewDelegate {
+    func didTapEpisodes(_ selection: String) {
+        let vc = EpisodeDetailViewController(url: URL(string: selection))
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

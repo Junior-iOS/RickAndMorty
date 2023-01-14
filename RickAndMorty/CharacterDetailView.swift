@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol CharacterDetailViewDelegate: AnyObject {
+    func didTapEpisodes(_ selection: String)
+}
+
 final class CharacterDetailView: UIView {
     
     private let spinner: UIActivityIndicatorView = {
@@ -33,6 +37,7 @@ final class CharacterDetailView: UIView {
     }()
     
     private let viewModel: CharacterDetailViewViewModel
+    weak var delegate: CharacterDetailViewDelegate?
     
     init(frame: CGRect, viewModel: CharacterDetailViewViewModel) {
         self.viewModel = viewModel
@@ -59,6 +64,20 @@ final class CharacterDetailView: UIView {
 
 // MARK: - COLLECTIONVIEW DELEGATE/DATASOURCE
 extension CharacterDetailView: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let sectionType = viewModel.sections[indexPath.section]
+        switch sectionType {
+        case .photo, .information:
+            break
+        case .episodes:
+            let episodes = viewModel.episodes
+            let selection = episodes[indexPath.row]
+            delegate?.didTapEpisodes(selection)
+        }
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.sections.count
     }

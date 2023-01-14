@@ -11,14 +11,11 @@ import UIKit
 class CharacterDetailViewViewModel {
     enum SectionType {
         case photo(viewModel: CharacterPhotoCollectionViewCellViewModel)
-        
         case information(viewModels: [CharacterInfoCollectionViewCellViewModel])
-        
         case episodes(viewModels: [CharacterEpisodeCollectionViewCellViewModel])
     }
     
     private let character: Character
-    
     public var sections: [SectionType] = []
     
     public var title: String {
@@ -27,6 +24,10 @@ class CharacterDetailViewViewModel {
     
     public var requestUrl: URL? {
         return URL(string: character.url)
+    }
+    
+    public var episodes: [String] {
+        character.episode
     }
     
     init(character: Character) {
