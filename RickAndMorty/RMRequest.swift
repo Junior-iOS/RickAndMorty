@@ -8,7 +8,7 @@
 import Foundation
 
 final class RMRequest {
-    private let endpoint: Endpoint
+    public let endpoint: Endpoint
     private let pathComponents: [String]
     private let queryParameters: [URLQueryItem]
     
@@ -103,4 +103,5 @@ final class RMRequest {
 
 extension RMRequest {
     static let listCharactersRequests = RMRequest(endpoint: .character)
+    static let listEpisodesRequests = RMRequest(endpoint: .episode)
 }

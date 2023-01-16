@@ -57,6 +57,7 @@ class CharacterEpisodeCollectionViewCell: UICollectionViewCell {
             self.airDateLabel.text = "Aired on \(data.airDate)"
         }
         viewModel.fetchEpisode()
+        contentView.layer.borderColor = viewModel.borderColor.cgColor
     }
 }
 
@@ -97,6 +98,5 @@ extension CharacterEpisodeCollectionViewCell: CodeView {
         contentView.backgroundColor = .tertiarySystemBackground
         contentView.layer.cornerRadius = 9
         contentView.layer.borderWidth = 2
-        contentView.layer.borderColor = UIColor.systemBlue.cgColor
     }
 }

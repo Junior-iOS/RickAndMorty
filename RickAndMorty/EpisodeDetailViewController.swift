@@ -8,11 +8,11 @@
 import UIKit
 
 final class EpisodeDetailViewController: UIViewController {
-    
-    private let url: URL?
+    private let viewModel: EpisodeDetailViewViewModel
+    private let episodeDetailView = EpisodeDetailView()
     
     init(url: URL?) {
-        self.url = url
+        self.viewModel = .init(endpointUrl: url)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -23,7 +23,30 @@ final class EpisodeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setup()
+    }
+    
+    @objc private func didTapShare() {
+        
+    }
+}
+
+// MARK: - CODE VIEW
+extension EpisodeDetailViewController: CodeView {
+    func buildHierarchy() {
+        view.addSubview(episodeDetailView)
+    }
+    
+    func setupConstraints() {
+        episodeDetailView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                                    left: view.safeAreaLayoutGuide.leftAnchor,
+                                    bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                    right: view.safeAreaLayoutGuide.rightAnchor)
+    }
+    
+    func setupAdditionalConfiguration() {
         title = "Episode"
         view.backgroundColor = .systemBackground
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapShare))
     }
 }
