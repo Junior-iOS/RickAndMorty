@@ -12,7 +12,7 @@ final class EpisodeDetailViewController: UIViewController {
     private let episodeDetailView = EpisodeDetailView()
     
     init(url: URL?) {
-        self.viewModel = .init(endpointUrl: url)
+        self.viewModel = EpisodeDetailViewViewModel(endpointUrl: url)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -48,5 +48,14 @@ extension EpisodeDetailViewController: CodeView {
         title = "Episode"
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(didTapShare))
+        
+        viewModel.delegate = self
+        viewModel.fetchEpisodeData()
+    }
+}
+
+extension EpisodeDetailViewController: EpisodeDetailViewViewModelDelegate {
+    func didFetchEpisodeDetails() {
+        episodeDetailView.configure(with: viewModel)
     }
 }
